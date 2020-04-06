@@ -1,6 +1,9 @@
 .no-scroll {
     overflow: hidden;
   }
+.buttons {
+  overflow: visible;
+}
 .page-splash {
 position: absolute;
 top: 0;
