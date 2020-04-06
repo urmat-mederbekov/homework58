@@ -29,13 +29,17 @@ let pText = "some text";
 pTag.innerHTML = pText;
 let comBlock = document.createElement('div');
 
-alert(createCommentElement(comBlock));
+alert(addCommentElement(createCommentElement(comBlock)));
 function createCommentElement(comment) {
     comment.setAttribute("class", "py-2 pl-3");
     comment.append(userLink);
     comment.append(pTag);
-    document.getElementsByClassName("comments")[0].append(comBlock);
+    // document.getElementsByClassName("comments")[0].append(comBlock);
     console.log(userLink);
     console.log(pTag);
     console.log(comment);
+    return comBlock;
+}
+function addCommentElement(commentElemet) {
+    document.getElementsByClassName("comments")[0].append(comBlock);
 }
