@@ -1,8 +1,8 @@
 .no-scroll {
-    overflow: hidden;
+  overflow-x: hidden;
   }
 .buttons {
-  overflow: visible;
+  overflow-x: visible;
 }
 .page-splash {
 position: absolute;
@@ -14,4 +14,16 @@ background: #ccc;
 display: flex;
 justify-content: center;
 align-items: center;
+}
+.button{
+  background-color: transparent;
+  font-weight: 0;
+  border: none;
+}
+.imageBut{
+  width: 100%;
+  padding: 0%;
+  margin: 0%;
+  border: none;
+
 }
