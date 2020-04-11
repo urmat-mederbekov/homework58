@@ -37,7 +37,6 @@ function createPostObject2(id, image, description, likes, dataTime, user) {
 function createPostElement2(post) {
     let postElement = document.createElement('div');
     postElement.className = "card my-3";
-    console.log(post.image);
     postElement.innerHTML = 
     '<!-- image block start -->\n' +
     '<div>\n' +
@@ -52,22 +51,20 @@ function createPostElement2(post) {
         '<!-- <div class="d-flex justify-content-around"> -->' +
         '<div class="justify-content-around">' +
         
-        '<button class="button" onclick="likeButton()">' +
+        '<button class="button heartBut">' +
             '<span class="h1 mx-2 heart text-danger">' +
                 '<i class="fas fa-heart"></i>' +
             '</span>' +
         '</button>' +
-        '<button class="comment button"' +
-         'onclick="addCommentElement(' +
-             'createCommentElement(createCommentObject()))">' +
+        '<button class="commentBut button">' +
              '<span class="h1 mx-2 muted">' +
                 '<i class="far fa-comment"></i>' +
             '</span>' +
         '</button>' +
         '<span class="mx-auto"></span>' +
-        '<button class="button" onclick="bookmarkButton()">' +
+        '<button class="button">' +
             '<span class="h1 mx-2 muted">' +
-                '<i class="far fa-bookmark bookmark"></i>' +
+                '<i class="far fa-bookmark bookmarkBut"></i>' +
             '</span>' +
         '</button>' +
         '<!-- post reactions block end -->' +
@@ -94,14 +91,13 @@ function createPostElement2(post) {
 function addPostElement(postElement) {
     document.getElementsByClassName("col col-lg-7 posts-container")[0].append(postElement);
 }
-function createCommentObject() {
+function createCommentObject(order) {
     let userLink = document.createElement('a');
-    document.createAttribute("class");
     userLink.setAttribute("href", "#");
     userLink.setAttribute("class", "muted");
     userLink.innerHTML = "username";
     let pTag = document.createElement('p');
-    let content = document.querySelector('[name=comment]').value;
+    let content = document.querySelectorAll('[name=comment]')[order].value;
     if (content == undefined || content.trim().length == 0)
         return;
     pTag.innerHTML = content;
@@ -113,48 +109,79 @@ function createCommentObject() {
 function createCommentElement(comment) {
     if (comment == undefined)
         return;
-    comment.setAttribute("class", "py-2 pl-3");
+    comment.className = "py-2 pl-3";
     return comment;
 }
-function addCommentElement(commentElemet) {
+function addCommentElement(commentElemet, order) {
     if (commentElemet == undefined)
         return;
-    document.getElementsByClassName("comments")[0].append(commentElemet);
+    document.getElementsByClassName("comments")[order].append(commentElemet);
 }
-function likeButton() {
-    let heart = document.getElementsByClassName("heart")[0];
-    if (heart.classList.contains("text-danger")) {
-        unlike(heart);
-    } else {
-        like(heart);
+function commentButton() {
+    for (let i = 0; i < document.getElementsByClassName("commentBut").length; i++) {
+        const commentBut = document.getElementsByClassName("commentBut")[i];
+        commentBut.addEventListener("click", function(){
+            addCommentElement(createCommentElement(createCommentObject(i)), i);  
+        });
     }
 }
-function unlike(heart) {
+commentButton();
+function likebutton() {
+    for (let i = 0; i < document.getElementsByClassName("heart").length; i++) {
+        let heartBut = document.getElementsByClassName("heartBut")[i];
+        let heart = document.getElementsByClassName("heart")[i];
+        let heartI = document.getElementsByClassName("fa-heart")[i];
+        heartBut.addEventListener("click", function(event){
+            if (heart.classList.contains("text-danger")) {
+                unlike(heart, heartI);
+            } else {
+                like(heart, heartI);
+            }
+        });
+    }
+}
+likebutton();
+function unlike(heart, heartI) {
     heart.classList.remove("text-danger");
     heart.classList.add("muted");
-    let heartI = document.getElementsByClassName("fa-heart")[0];
     heartI.classList.remove("fas");
     heartI.classList.add("far");
 }
-function like(heart) {
+function like(heart, heartI) {
     heart.classList.add("text-danger");
     heart.classList.remove("muted");
-    let heartI = document.getElementsByClassName("fa-heart")[0];
     heartI.classList.remove("far");
     heartI.classList.add("fas");
 }
-let image = document.getElementsByClassName("imageBut")[0];
-image.addEventListener("dblclick", function(event) {
-    likeButton();
-});
-function bookmarkButton() {
-    let bookmarkElement = document.getElementsByClassName("bookmark")[0];
-    if (bookmarkElement.classList.contains("far")) {
-        bookmark(bookmarkElement);
-    } else {
-        unbookmark(bookmarkElement);
+function imageButton() {
+    for (let i = 0; i < document.getElementsByClassName("imageBut").length; i++) {
+        const imageBut = document.getElementsByClassName("imageBut")[i];
+        imageBut.addEventListener("dblclick", function(event) {
+            let heart = document.getElementsByClassName("heart")[i];
+            let heartI = document.getElementsByClassName("fa-heart")[i];
+            if (heart.classList.contains("text-danger")) {
+                unlike(heart, heartI);
+            } else {
+                like(heart, heartI);
+            }
+        });
     }
 }
+imageButton();
+function bookmarkButton(){
+    for (let i = 0; i < document.getElementsByClassName("bookmark").length; i++) {
+        const bookmarkElement = document.getElementsByClassName("bookmark")[i];
+        const bookmarkBut = document.getElementsByClassName("bookmarkBut")[i];
+        bookmarkBut.addEventListener("click", function(){
+            if (bookmarkElement.classList.contains("far")) {
+                bookmark(bookmarkElement);
+            } else {
+                unbookmark(bookmarkElement);
+            }
+        });
+    }  
+}
+bookmarkButton();
 function bookmark(bookmark) {
     bookmark.classList.remove("far");
     bookmark.classList.add("fas");
