@@ -31,20 +31,18 @@
                 <!-- <div class="d-flex justify-content-around"> -->
                 <div class="justify-content-around">
                 
-                <button class="button" onclick="likeButton()">
+                <button class="button heartBut">
                     <span class="h1 mx-2 heart text-danger">
                         <i class="fas fa-heart"></i>
                     </span>
                 </button>
-                <button class="comment button"
-                 onclick="addCommentElement(
-                     createCommentElement(createCommentObject()))">
+                <button class="commentBut button">
                      <span class="h1 mx-2 muted">
                         <i class="far fa-comment"></i>
                     </span>
                 </button>
                 <span class="mx-auto"></span>
-                <button class="button" onclick="bookmarkButton()">
+                <button class="button bookmarkBut">
                     <span class="h1 mx-2 muted">
                         <i class="far fa-bookmark bookmark"></i>
                     </span>
@@ -77,6 +75,65 @@
     
             </div>
             <!-- single post end -->
+            <!-- single post start -->
+            <div class="card my-3">
+                <!-- image block start -->
+                <div>
+                    <button class="imageBut">
+                        <img class="d-block w-100" src="http://placekitten.com/500/500" alt="Post image">
+                    </button>
+                </div>
+                <!-- image block end -->
+                <div class="px-4 py-3">
+                    
+                    <!-- post reactions block start -->
+                    <!-- <div class="d-flex justify-content-around"> -->
+                    <div class="justify-content-around">
+                    
+                    <button class="button heartBut">
+                        <span class="h1 mx-2 heart text-danger">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                    </button>
+                    <button class="commentBut button">
+                         <span class="h1 mx-2 muted">
+                            <i class="far fa-comment"></i>
+                        </span>
+                    </button>
+                    <span class="mx-auto"></span>
+                    <button class="button bookmarkBut">
+                        <span class="h1 mx-2 muted">
+                            <i class="far fa-bookmark bookmark"></i>
+                        </span>
+                    </button>
+                    <!-- post reactions block end -->
+                    <hr>
+                    <!-- post section start -->
+                    <div class="posts">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                      
+                </div>
+                    <!-- post section end -->
+                    <hr>
+                    <!-- comments section start -->
+                    <div class="comments">
+                        <div class="py-2 pl-3">
+                            <a href="#" class="muted">someusername</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                        </div>
+                        <div class="py-2 pl-3">
+                            <a href="#" class="muted">someusername</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                        </div>
+                    </div>
+                    <input type="text" size="20" name="comment"/>
+                    <!-- comments section end -->
+                </div>
+        
+                </div>
+                <!-- single post end -->
         </div>
         </div>
     </div>
